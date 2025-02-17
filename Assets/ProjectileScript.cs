@@ -12,7 +12,7 @@ public class ProjectileScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = moveDirection * speed;
+        rb.linearVelocity = speed*(moveDirection * speed).normalized;
         Invoke("DestroyProjectile", lifetime);
     }
 

@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -65,5 +66,13 @@ public class EnemyScript : MonoBehaviour
         animator.SetFloat("Speed", speed);
         animator.SetBool("Attacking", false);
         animator.SetBool("Hit", false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            takeDamage();
+        }
     }
 }
