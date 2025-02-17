@@ -19,6 +19,7 @@ public class EnemyScript : MonoBehaviour
     {
 
         float distance = Vector3.Distance(player.transform.position, transform.position);
+        Debug.Log(distance);
         if (health == 0) //if health is 0 play death animation and then destroy object
         {
             returnToIdle();
