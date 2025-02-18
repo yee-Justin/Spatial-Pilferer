@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class EnemyScript : MonoBehaviour
     public PlayerScript player;
     public float speed = 0.0f;
     public int health = 2;
-    private float deathTime = 2.5f;
+    private float deathTime = 1f;
     private float timeSinceLastHit = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +39,18 @@ public class EnemyScript : MonoBehaviour
         else if (distance < 3)
         { //if player is close move towards them
             speed = 1.0f;
+            //make enemy move towards player
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            //make enemy face player
+            if(player.transform.position.x < transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
             animator.SetFloat("Speed", speed);
             animator.SetBool("Attacking", false);
 
@@ -71,6 +83,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //take damage if hit by projectile
         if (collision.CompareTag("Projectile"))
         {
             takeDamage();

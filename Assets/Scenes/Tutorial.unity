@@ -7164,7 +7164,7 @@ GameObject:
   - component: {fileID: 1198613179}
   - component: {fileID: 1198613180}
   m_Layer: 6
-  m_Name: Test Player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7390,6 +7390,67 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 173196824}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab1c60d240c41b54a908518535917112, type: 3}
+--- !u!1001 &1531934904
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560500179222509541, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027632182408252379, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: m_Name
+      value: Crow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201371711669343503, guid: ab1c60d240c41b54a908518535917112, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1198613178}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8654,3 +8715,4 @@ SceneRoots:
   - {fileID: 1355752506}
   - {fileID: 1669678726}
   - {fileID: 2145303164}
+  - {fileID: 1531934904}
