@@ -146,5 +146,14 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("Level1");
         }
+        if (collision.CompareTag("HealthPotion"))
+        {
+            if(currentHealth < maxHealth)
+            {
+                currentHealth++;
+                UpdateHearts();
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }

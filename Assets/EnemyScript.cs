@@ -7,7 +7,6 @@ public class EnemyScript : MonoBehaviour
     public PlayerScript player;
     public float speed = 0.0f;
     public int health = 2;
-    private float deathTime = 1f;
     private float timeSinceLastHit = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +24,7 @@ public class EnemyScript : MonoBehaviour
         {
             returnToIdle();
             animator.SetBool("Dead", true);
-            Destroy(gameObject, deathTime); // destroy after death animation finishes
+            Destroy(gameObject, 0.5f); // destroy 
         }else if(timeSinceLastHit < 1.5f) //if we are currently being hit play the hit animation
         {
             animator.SetBool("Hit", true);
@@ -36,7 +35,7 @@ public class EnemyScript : MonoBehaviour
             animator.SetFloat("Speed", speed);
             animator.SetBool("Attacking", true);
         }
-        else if (distance < 3)
+        else if (distance < 4)
         { //if player is close move towards them
             speed = 1.0f;
             //make enemy move towards player
