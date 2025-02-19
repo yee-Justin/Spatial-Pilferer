@@ -23,10 +23,14 @@ public class PlayerScript : MonoBehaviour
     public Image[] hearts;  // Assign heart UI images in Inspector
     public Sprite fullHeart;  // Assign full heart sprite
     public Sprite emptyHeart; // Assign empty heart sprite
+    public SpriteRenderer spriteRenderer;
 
+    public Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         UpdateHearts();
     }
@@ -36,13 +40,14 @@ public class PlayerScript : MonoBehaviour
         UpdateHearts();
         if(currentHealth <= 0)
         {
+            animator.SetBool("isDead", true);
             Respawn();
+            animator.SetBool("isDead", false);
             currentHealth = maxHealth;
         }
         spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
 
         Move();
-
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             Jump();
@@ -62,9 +67,26 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
+    public void OnAttackAnimationEnd()
+    {
+        animator.SetBool("isAttacking", false); // Transition back to idle
+    }
+
+
     private void Move()
     {
         float moveInput = Input.GetAxisRaw("Horizontal"); // A = -1, D = 1
+        if (moveInput != 0)
+        {
+            spriteRenderer.flipX = (moveInput == -1); // Flip if moving left
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
+
         rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
     }
 
@@ -77,15 +99,13 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - firePoint.position).normalized;
-        Debug.Log("Mouse Position: " + mousePosition);
-        Debug.Log("Direction: " + direction);
 
-        Debug.Log("Projectile instantiated!");
+        animator.SetBool("isAttacking", true);
         activeProjectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Debug.Log("Setting direction!");
         activeProjectile.GetComponent<ProjectileScript>().SetDirection(direction);
         activeProjectile.GetComponent<ProjectileScript>().SetOwner(this);
     }
+
 
     private void Teleport()
     {

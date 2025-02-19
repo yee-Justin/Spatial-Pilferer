@@ -37,7 +37,7 @@ public class EnemyScript : MonoBehaviour
         }
         else if (distance < 4)
         { //if player is close move towards them
-            speed = 1.0f;
+            speed = 2.0f;
             //make enemy move towards player
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             //make enemy face player
