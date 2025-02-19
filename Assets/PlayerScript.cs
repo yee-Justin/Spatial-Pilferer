@@ -150,7 +150,10 @@ public class PlayerScript : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1);
+            if (!collision.gameObject.GetComponent<Animator>().GetBool("Dead"))
+            {
+                TakeDamage(1);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

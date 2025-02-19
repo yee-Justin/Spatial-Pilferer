@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5515154041674404856}
   player: {fileID: 0}
-  speed: 3
+  speed: 6
   health: 1
 --- !u!61 &7806211573874157466
 BoxCollider2D:

@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5686505373920364139}
   player: {fileID: 0}
-  speed: 1
-  health: 1
+  speed: 2
+  health: 3
 --- !u!50 &8554119467103284788
 Rigidbody2D:
   serializedVersion: 5
