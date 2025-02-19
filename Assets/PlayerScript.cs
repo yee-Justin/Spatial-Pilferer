@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
@@ -139,6 +140,11 @@ public class PlayerScript : MonoBehaviour
         {
             TakeDamage(1);
             Respawn();
+        }
+
+        if(collision.CompareTag("Portal"))
+        {
+            SceneManager.LoadScene("Level1");
         }
     }
 }

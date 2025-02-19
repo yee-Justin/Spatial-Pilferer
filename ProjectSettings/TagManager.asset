@@ -10,6 +10,7 @@ TagManager:
   - SpaceWall
   - KillZone
   - Spawnpoint
+  - Portal
   layers:
   - Default
   - TransparentFX
