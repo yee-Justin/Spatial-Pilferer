@@ -11,6 +11,9 @@ TagManager:
   - KillZone
   - Spawnpoint
   - Portal
+  - HealthPotion
+  - Key
+  - Gate
   layers:
   - Default
   - TransparentFX

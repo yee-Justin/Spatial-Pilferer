@@ -166,6 +166,12 @@ public class PlayerScript : MonoBehaviour
         {
             SceneManager.LoadScene("Level1");
         }
+
+        if(collision.CompareTag("Gate"))
+        {
+            SceneManager.LoadScene("GameStart");
+            Debug.Log("YOU WON!!!!!!!!!!!!!!!!!");
+        }
         if (collision.CompareTag("HealthPotion"))
         {
             if(currentHealth < maxHealth)
