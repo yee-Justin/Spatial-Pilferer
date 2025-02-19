@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -6,21 +8,38 @@ public class PlayerScript : MonoBehaviour
     public float jumpForce = 7f;  // Jump force
     private Rigidbody2D rb;
     private bool isGrounded;
-
+    private bool teleportCooldown;
 
     public GameObject projectilePrefab;  // Assign in Inspector
+    public GameObject spawnpoint;  // Assign in Inspector
     public Transform firePoint;  // Position where projectile spawns
 
     private GameObject activeProjectile;  // Stores the current projectile
+    
+    public int maxHealth = 3;
+    public int currentHealth;
+
+    public Image[] hearts;  // Assign heart UI images in Inspector
+    public Sprite fullHeart;  // Assign full heart sprite
+    public Sprite emptyHeart; // Assign empty heart sprite
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
+        UpdateHearts();
     }
 
     void Update()
     {
-        
+        UpdateHearts();
+        if(currentHealth <= 0)
+        {
+            Respawn();
+            currentHealth = maxHealth;
+        }
+        spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint");
+
         Move();
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
@@ -34,8 +53,9 @@ public class PlayerScript : MonoBehaviour
 
         if(activeProjectile != null)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && !teleportCooldown)
             {
+                teleportCooldown = true;
                 Teleport();
             }
         }
@@ -72,7 +92,27 @@ public class PlayerScript : MonoBehaviour
         activeProjectile.GetComponent<ProjectileScript>().DestroyProjectile();
     }
 
+    private void Respawn()
+    {
+        transform.position = spawnpoint.transform.position;
+    }
+    void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < currentHealth)
+                hearts[i].sprite = fullHeart;  // Show full heart
+            else
+                hearts[i].sprite = emptyHeart; // Show empty heart
+        }
+    }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth < 0) currentHealth = 0;
+        UpdateHearts();
+    }
     public void OnProjectileDestroyed()
     {
         Debug.Log("Projectile destroyed!");
@@ -84,6 +124,21 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+
+            teleportCooldown = false;
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.CompareTag("KillZone"))
+        {
+            TakeDamage(1);
+            Respawn();
         }
     }
 }

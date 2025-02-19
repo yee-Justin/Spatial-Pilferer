@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 906b620c8d5fcad46baba4b04a181470
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - projectilePrefab: {instanceID: 0}
+  - spawnpoint: {instanceID: 0}
+  - firePoint: {instanceID: 0}
+  - fullHeart: {fileID: -5162462866935653152, guid: 1e6a3b1c7f4994b4eb52631f991d0803, type: 3}
+  - emptyHeart: {fileID: 794753051023938693, guid: 1e6a3b1c7f4994b4eb52631f991d0803, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

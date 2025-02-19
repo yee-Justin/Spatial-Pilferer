@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float speed = 10f;
-    public float lifetime = 3f;
+    public float lifetime = 1.5f;
     private Vector2 moveDirection;
     private PlayerScript owner;  // Reference to the player
 

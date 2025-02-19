@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Projectile
   - SpaceWall
+  - KillZone
+  - Spawnpoint
   layers:
   - Default
   - TransparentFX
